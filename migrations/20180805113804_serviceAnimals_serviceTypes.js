@@ -1,19 +1,21 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('serviceAnimals_serviceTypes', function(table) {
-  table.integer('animal_id').unsigned();
-  table.foreign('animal_id')
-       .references('serviceAnimals.id')
+  return knex.schema.createTable('serviceanimals_servicetypes', function(table) {
+  table.integer('serviceanimal_id').unsigned();
+  table.foreign('serviceanimal_id')
+       .references('serviceanimals.id')
+//       .inTable('serviceanimals')
        .onDelete('CASCADE')
 
-  table.integer('service_id').unsigned();
-  table.foreign('service_id')
-       .references('serviceTypes.id')
+  table.integer('servicetype_id').unsigned();
+  table.foreign('servicetype_id')
+       .references('servicetypes.id')
+//       .inTable('servicetypes')
        .onDelete('CASCADE')
   table.timestamps(true, true)
   });
 }
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('serviceAnimals_serviceTypes')
+  return knex.schema.dropTableIfExists('serviceanimals_servicetypes')
 };

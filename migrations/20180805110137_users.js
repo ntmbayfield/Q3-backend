@@ -6,11 +6,11 @@ exports.up = function(knex, Promise) {
       table.string('email').notNullable().unique('email')
       table.string('password').notNullable()
       table.string('condition').notNullable()
-      table.string('emergency-contact').notNullable()
+      table.string('emergency_contact').notNullable()
       table.timestamps(true, true)
     })
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('tablename')
+  return knex.schema.dropTableIfExists('users')
 };

@@ -1,10 +1,10 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('serviceAnimals', function(table) {
+  return knex.schema.createTable('serviceanimals', function(table) {
       table.increments('id').primary()
       table.string('animal_name').notNullable()
       table.integer('animal_age')
-      table.string('breed')
+      table.string('animal_breed')
       table.integer('owner_id').unsigned()
       table.foreign('owner_id')
            .references('users.id')
@@ -14,5 +14,5 @@ exports.up = function(knex, Promise) {
 }
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('serviceAnimals')
+  return knex.schema.dropTableIfExists('serviceanimals')
 };
