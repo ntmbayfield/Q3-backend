@@ -7,7 +7,7 @@ var knex = require('knex');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-// var medicationsRouter = require('./routes/medications');
+var medicationsRouter = require('./routes/medications');
 // var serviceanimalsRouter = require('./routes/serviceanimals');
 var servicetypesRouter = require('./routes/servicetypes');
 // var users_medicationsRouter = require('./routes/users_medications');
@@ -16,8 +16,6 @@ var servicetypesRouter = require('./routes/servicetypes');
 var cors = require('cors');
 var app = express();
 app.use(cors());
-
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-// app.use('/medications', medicationsRouter);
+app.use('/medications', medicationsRouter);
 // app.use('/users/:userid/medications', users_medicationsRouter);
 app.use('/servicetypes', servicetypesRouter);
 // app.use('/users/:userid/serviceanimals', serviceanimalsRouter);
