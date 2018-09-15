@@ -4,19 +4,28 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-     "test": "standard && node my-tests.js"
+    "test": "standard && node my-tests.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
+    "dotenv": "^6.0.0",
+    "enzyme": "^3.5.0",
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
+    "jest": "^23.5.0",
+    "jest-environment-enzyme": "^6.0.3",
+    "jest-enzyme": "^6.0.3",
     "jsonwebtoken": "^8.3.0",
     "knex": "^0.15.2",
     "morgan": "~1.9.0",
-    "pg": "^7.4.3"
+    "ngrok": "^3.0.1",
+    "nodemon": "^1.18.4",
+    "pg": "^7.4.3",
+    "react": "^16.4.2",
+    "react-test-renderer": "^16.4.2"
   },
   "devDependencies": {
     "standard": "*"

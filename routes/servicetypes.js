@@ -28,7 +28,7 @@ router.put('/:servicetypeid', (req, res, next) => {
     .where('id', req.params.servicetypeid)
     .limit(1)
     .update({
-      "name_of_service": req.body.name_of_service
+      'name_of_service': req.body.name_of_service
     })
     .returning('*')
     .then((data) => {

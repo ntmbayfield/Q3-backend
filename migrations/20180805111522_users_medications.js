@@ -1,5 +1,5 @@
 
-exports.up = function(knex, Promise) {
+exports.up = function (knex, Promise) {
   return knex.schema.createTable('users_medications', function(table) {
     table.integer('user_id').unsigned();
     table.foreign('user_id')
@@ -16,6 +16,6 @@ exports.up = function(knex, Promise) {
   });
 }
 
-exports.down = function(knex, Promise) {
+exports.down = function (knex, Promise) {
     return knex.schema.dropTableIfExists('users_medications')
 };

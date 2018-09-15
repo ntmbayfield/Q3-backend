@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const knex = require('../knex')
+const knex = require('../knex');
+
 
 
 /* READ ALL USERS FROM THE USER TABLE */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   knex('users')
   .then((data) => {
     console.log('data', data)
@@ -23,31 +24,44 @@ router.get('/:userid', (req, res, next) => {
 })
 
 // CREATE ONE NEW RECORD IN THE USERS TABLE
+//verify that email address isnt already in database, if it promt user to reset password
+//if not in databse, then need to has password before creating userInfo obj
+
+
 router.post('/', (req, res, next) => {
+//insert here process ogf using bcrypt to hash and salt password
+
+  let hashedPassword = "";
+
   let userInfo = {
     name: req.body.name,
     email: req.body.email,
-    password: req.body.password,
+    password: hashedPassword,
     condition: req.body.condition,
     emergency_contact: req.body.emergency_contact
-      // hashpassword: "todo"
   };
+
   knex('users')
-    .insert(userInfo)
-    .then((data) => {
-      console.log('sucessfully created user account');
-      res.statusCode = 200;
-      return res.json(userInfo);
-      console.log('user has an Id of ');
+    .where('email', req.params.email)
+    .then(function(user) {
+      console.log(user);
+
+    // was the user found?
+      knex('users')
+        .insert(userInfo)
+        .then((data) => {
+          console.log('sucessfully created user account');
+          res.statusCode = 200;
+          return res.json(userInfo);
+          console.log('user has an Id of ');
+        })
+        .catch(function(error) {
+          console.error(error);
+          res.statusCode = 500;
+          return res.json ();
+        })
     })
-    .catch(function(error) {
-      console.error(error);
-      res.statusCode = 500;
-      return res.json({
-        errors: ['Failed to create user account']
-      })
-    });
-})
+  });
 
 // UPDATE ONE RECORD IN THE USERS TABLE
 router.put('/:userid', (req, res, next) => {
@@ -83,9 +97,9 @@ router.put('/:userid', (req, res, next) => {
       res.statusCode = 500;
       return res.json({
         errors: 'Failed to update user\'s account'
+      })
     })
   })
-})
 
 
 // DELETE ONE RECORD IN THE USERS TABLE

@@ -1,9 +1,10 @@
+var dotenv = require('dotenv').config();
 var express = require('express');
 var createError = require('http-errors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var knex = require('knex');
+// var knex = require('knex');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -12,6 +13,10 @@ var medicationsRouter = require('./routes/medications');
 var servicetypesRouter = require('./routes/servicetypes');
 // var users_medicationsRouter = require('./routes/users_medications');
 // var serviceanimals_servicetypesRouter = require('./routes/serviceanimals_servicetypes');
+
+
+
+
 
 var cors = require('cors');
 var app = express();
@@ -34,14 +39,17 @@ app.use('/medications', medicationsRouter);
 app.use('/servicetypes', servicetypesRouter);
 // app.use('/users/:userid/serviceanimals', serviceanimalsRouter);
 // app.use('/serviceanimals/:serviceanimalid/servicetypes', serviceanimals_servicetypesRouter);
+//app.use('/alerts', alertsRouter);
+
+
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

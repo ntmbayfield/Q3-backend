@@ -34,41 +34,11 @@ router.put('/medicationid', (req, res, next) => {
       res.statusCode = 200;
       return res.json('medication was successfully updated');
     })
-
-    .returning('*')
-    .then(function(updatedUser) {
-      console.log('successfully updated a user\'s account');
-      res.statusCode = 200;
-      return res.json('user successfully updated');
-    }) } else {
-      throw new Error('Oops, no user with that id')
-    }
-  })
-      re, req.params.medicationsid)
-      then(function(servicetype) {
-        console.log(servicetype)
-
-        if (servicetype.length>0) {
-          knex('servicetypes')
-          .where('id', req.params.servicetypeid)
-          .update({
-            name_of_service: req.body.name_of_service
-          })
-          .return('*')
-          .then(function(updatedServicetype) {
-            console.log('successfully updated entry in medications tabes');
-            res.statusCode = 200;
-            return res.json('medication was successfully updated');
-          })
-        } else {
-          throw new Error('Oops, no medication with that id')
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        res.statusCode = 500;
-        return res.json({
-        errors: 'Failed to update medication with that id'
+    .catch((error) => {
+      console.error(error);
+      res.statusCode = 500;
+      return res.json({
+      errors: 'Failed to update medication with that id'
     })
   })
 })
@@ -91,7 +61,8 @@ router.delete('/:medicationid', (req, res, next) => {
         errors: 'Failed to delete that entry in the medications table'
       })
     })
-  });
+  })
+})
 
 
-module.exports = router;
+module.exports = router

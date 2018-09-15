@@ -1,6 +1,6 @@
 
-exports.up = function(knex, Promise) {
-  return knex.schema.createTable('serviceanimals_servicetypes', function(table) {
+exports.up = function (knex, Promise) {
+  return knex.schema.createTable('serviceanimals_servicetypes', function (table) {
   table.integer('serviceanimal_id').unsigned();
   table.foreign('serviceanimal_id')
        .references('serviceanimals.id')
@@ -16,6 +16,6 @@ exports.up = function(knex, Promise) {
   });
 }
 
-exports.down = function(knex, Promise) {
+exports.down = function (knex, Promise) {
   return knex.schema.dropTableIfExists('serviceanimals_servicetypes')
 };
