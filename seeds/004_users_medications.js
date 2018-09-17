@@ -6,12 +6,12 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('users_medications').insert([
         {user_id: 1, medication_id: 1},
-        {user_id: 1, medication_id: 3},
+        {user_id: 5, medication_id: 3},
         {user_id: 2, medication_id: 1},
-        {user_id: 2, medication_id: 2},
+        {user_id: 5, medication_id: 2},
         {user_id: 3, medication_id: 2},
         {user_id: 2, medication_id: 3},
-        {user_id: 1, medication_id: 2},
+        {user_id: 4, medication_id: 2},
       ]);
     });
 };
