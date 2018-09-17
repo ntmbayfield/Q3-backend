@@ -11,6 +11,7 @@ var usersRouter = require('./routes/users');
 var medicationsRouter = require('./routes/medications');
 // var serviceanimalsRouter = require('./routes/serviceanimals');
 var servicetypesRouter = require('./routes/servicetypes');
+var devicesRouter = require('./routes/devices');
 // var users_medicationsRouter = require('./routes/users_medications');
 // var serviceanimals_servicetypesRouter = require('./routes/serviceanimals_servicetypes');
 
@@ -37,6 +38,7 @@ app.use('/users', usersRouter);
 app.use('/medications', medicationsRouter);
 // app.use('/users/:userid/medications', users_medicationsRouter);
 app.use('/servicetypes', servicetypesRouter);
+app.use('/devices', devicesRouter);
 // app.use('/users/:userid/serviceanimals', serviceanimalsRouter);
 // app.use('/serviceanimals/:serviceanimalid/servicetypes', serviceanimals_servicetypesRouter);
 //app.use('/alerts', alertsRouter);
