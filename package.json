@@ -28,6 +28,8 @@
     "react-test-renderer": "^16.4.2"
   },
   "devDependencies": {
+    "body-parser": "^1.18.3",
+    "node-bandwidth": "^2.6.5",
     "standard": "*"
   }
 }

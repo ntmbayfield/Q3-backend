@@ -13,8 +13,9 @@ router.get('/', function (req, res, next) {
   })
 })
 
-// READ A SPECIFIC USER FROM THE DEVICES TABLE
-router.get('/:serialNum', (req, res, next) => {
+// READ A SPECIFIC devices FROM THE DEVICES TABLE
+router.get('/emergency/:serialNum', (req, res, next) => {
+  // pull the user info here too as well as device info
   knex('devices')
   .where('serialNum', req.params.serialNum)
   .then((data) => {
